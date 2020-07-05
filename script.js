@@ -48,19 +48,25 @@ function deleteRow() {
 function selectCategory() {
 	let parent = event.target.parentNode.parentNode;
 	if (event.target.value === "new") {
-		console.log(parent.childNodes[3].childNodes[1]);
-		parent.childNodes[3].childNodes[1].style.display = "none";
-		// console.log(parent.childNodes[3].childNodes[1]);
-		parent.childNodes[3].childNodes[1].value = "";
 		parent.childNodes[3].childNodes[3].style.display = "block";
+		parent.childNodes[3].childNodes[1].style.display = "none";
 
-		parent.childNodes[5].childNodes[1].style.display = "none";
+		let selectElement = parent.childNodes[3].childNodes[1]
+		selectElement.parentNode.removeChild(selectElement);
+		
 		parent.childNodes[5].childNodes[3].style.display = "block";
+		parent.childNodes[5].childNodes[1].style.display = "none";
+
+		selectElement = parent.childNodes[5].childNodes[1]
+		selectElement.parentNode.removeChild(selectElement);
 
 		for (let i = 7; i < parent.childNodes.length - 2; i += 2) {
 			parent.childNodes[i].childNodes[0].disabled = false;
 		}
 	} else {
+		let selectElement = parent.childNodes[3].childNodes[3];
+		selectElement.parentNode.removeChild(selectElement);
+
 		let xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
@@ -95,32 +101,62 @@ function selectCategory() {
 
 function selectItem() {
 	let parent = event.target.parentNode.parentNode;
+	if(event.target.value === 'new'){
+		parent.childNodes[5].childNodes[3].style.display = "block";
+		parent.childNodes[5].childNodes[1].style.display = "none";
 
-	let xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function () {
-		if (this.readyState == 4 && this.status == 200) {
-			const arrResponse = this.responseText.split("");
-			for (i = 0; i < arrResponse.length; i++) {
-				if (
-					arrResponse[i] === "<" &&
-					arrResponse[i + 1] === "!" &&
-					arrResponse[i + 2] === "D"
-				) {
-					arrResponse.splice(i, arrResponse.length - i);
-					break;
+		let selectElement = parent.childNodes[5].childNodes[1];
+		selectElement.parentNode.removeChild(selectElement);
+	} else {
+		let selectElement = parent.childNodes[5].childNodes[3];
+		selectElement.parentNode.removeChild(selectElement);
+
+		let categoryName = parent.childNodes[3].childNodes[1].value;
+		
+		let xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				let firstResponse = this.responseText.split("Add An Item");
+				firstResponse.splice(0,1)
+				firstArrResponse = firstResponse.join("").split("")
+
+				for (i = 0; i < firstArrResponse.length; i++) {
+					if (
+						firstArrResponse[i] === "o" &&
+						firstArrResponse[i + 1] === "n" &&
+						firstArrResponse[i + 2] === ">"
+					) {
+						firstArrResponse.splice(0, i+3);
+						break;
+					}
 				}
-			}
-			const newResponse = arrResponse.join("").split(",");
-			newResponse[1] = newResponse[1].replace(/(\r\n|\n|\r)/gm, "");
 
-			parent.childNodes[7].childNodes[0].value = newResponse[0];
-			parent.childNodes[11].childNodes[0].value = parseFloat(
-				newResponse[1]
-			).toFixed(2);
-		}
-	};
-	xmlhttp.open("GET", "/index.php?item=" + event.target.value, true);
-	xmlhttp.send();
+				const arrResponse = firstArrResponse.join("").split("")
+
+				for (i = 0; i < arrResponse.length; i++) {
+					if (
+						arrResponse[i] === "<" &&
+						arrResponse[i + 1] === "!" &&
+						arrResponse[i + 2] === "D"
+					) {
+						arrResponse.splice(i, arrResponse.length - i);
+						break;
+					}
+				}
+				const newResponse = arrResponse.join("").split(",");
+				newResponse[0] = newResponse[0].replace(/(\r\n|\n|\r)/gm, "");
+				newResponse[1] = newResponse[1].replace(/(\r\n|\n|\r)/gm, "");
+	
+				parent.childNodes[7].childNodes[0].value = newResponse[0];
+				parent.childNodes[11].childNodes[0].value = parseFloat(
+					newResponse[1]
+				).toFixed(2);
+			}
+		};
+		xmlhttp.open("GET", "/index.php?item=" + event.target.value  + "&category=" + categoryName, true);
+		xmlhttp.send();
+	}
+
 }
 
 function calculateTotal() {

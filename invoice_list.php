@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Invoice Builder</title>
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -43,6 +43,7 @@
             <div class='totals'>
                 <h3 class='total-header'>Amount Due By Category:</h3>
                 <?php
+                    $category_res = mysqli_query($db, "SELECT category_name FROM invoice_category");
                     while($category = mysqli_fetch_array($category_res)){
                         $category_name = $category['category_name'];
                         $category_total_query = mysqli_query($db, "SELECT ROUND(SUM(item_total),2) AS total FROM invoice_items_join j JOIN invoice_item ii ON j.item_id = ii.id JOIN invoice_category c ON ii.category_id = c.id WHERE category_name = '".$category_name."'");
