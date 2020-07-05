@@ -7,8 +7,8 @@
 	$header = '<div class="header-container">
 		<h1 class="logo">PHP Invoice Builder</h1>
 		<form id="nav-form" class="btn-container">
-			<input type="button" onclick="submitForm()" class="nav-btn" id="/index.php" value="Create Invoice">
-			<input type="button" onclick="submitForm()" class="nav-btn" id="/invoice_list.php" value="Invoice List">
+			<input type="button" onclick="submitForm()" class="nav-btn btn" id="/index.php" value="Create Invoice">
+			<input type="button" onclick="submitForm()" class="nav-btn btn" id="/invoice_list.php" value="Invoice List">
 		</form>
 	</div>';
 
@@ -94,15 +94,15 @@
 	}
 
 	// QUERY DB FOR INVOICE INFORMATION TO DISPLAY IN THE INVOICE LIST VIEW
-	$invoice_row = mysqli_query($db, "SELECT invoice_number, invoice_date, customer_name, email, phone, amt_due FROM invoice");
+	$invoice_row = mysqli_query($db, "SELECT invoice_number, invoice_date, customer_name, email, phone, ROUND(amt_due,2) as amt_due FROM invoice");
 
 	// QUERY DB FOR THE TOTAL TAX AMOUNT INVOICED
-	$tax_total_query = mysqli_query($db, "SELECT SUM(est_tax) AS total FROM invoice");
+	$tax_total_query = mysqli_query($db, "SELECT ROUND(SUM(est_tax),2) AS total FROM invoice");
 	$result = mysqli_fetch_array($tax_total_query);
 	$tax_total = $result['total'];
 
 	// QUERY DB FOR THE TOTAL INVOICED AMOUNT
-	$invoice_total_query = mysqli_query($db, "SELECT SUM(amt_due) AS total FROM invoice");
+	$invoice_total_query = mysqli_query($db, "SELECT ROUND(SUM(amt_due),2) AS total FROM invoice");
 	$result = mysqli_fetch_array($invoice_total_query);
 	$invoice_total = $result['total'];
 ?>

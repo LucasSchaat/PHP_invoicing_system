@@ -27,16 +27,16 @@ function deleteRow(){
             }
         }
     }
-    document.getElementById('subtotal_input').value = subtotal
+    document.getElementById('subtotal_input').value = parseFloat(subtotal).toFixed(2)
 
     let taxRate = +document.getElementById('tax_rate_input').value / 100
     let estimatedTax = taxRate * subtotal
 
-    document.getElementById('est_tax_input').value = estimatedTax
+    document.getElementById('est_tax_input').value = parseFloat(estimatedTax).toFixed(2)
 
     let amountDue = subtotal + estimatedTax
 
-    document.getElementById('amt_due_input').value = amountDue
+    document.getElementById('amt_due_input').value = parseFloat(amountDue).toFixed(2)
 }
 
 function selectCategory(){
@@ -93,32 +93,40 @@ function selectItem(){
 }
 
 function calculateTotal() {
+    event.target.value = parseFloat(event.target.value).toFixed(2)
+
     let parent = event.target.parentNode.parentNode
     let total = parent.childNodes[9].childNodes[0].value * parent.childNodes[11].childNodes[0].value
 
     subtotal -= +parent.childNodes[13].childNodes[0].value
-    parent.childNodes[13].childNodes[0].value = total
+    parent.childNodes[13].childNodes[0].value = parseFloat(total).toFixed(2)
     subtotal += +parent.childNodes[13].childNodes[0].value
 
-    document.getElementById('subtotal_input').value = subtotal
+    document.getElementById('subtotal_input').value = parseFloat(subtotal).toFixed(2)
 
     let taxRate = +document.getElementById('tax_rate_input').value / 100
     let estimatedTax = taxRate * subtotal
 
-    document.getElementById('est_tax_input').value = estimatedTax
+    document.getElementById('est_tax_input').value = parseFloat(estimatedTax).toFixed(2)
 
     let amountDue = subtotal + estimatedTax
 
-    document.getElementById('amt_due_input').value = amountDue
+    document.getElementById('amt_due_input').value = parseFloat(amountDue).toFixed(2)
 }
 
 function updateTotal(){
+    event.target.value = parseFloat(event.target.value).toFixed(1);
+
     let taxRate = +document.getElementById('tax_rate_input').value / 100
     let estimatedTax = taxRate * subtotal
 
-    document.getElementById('est_tax_input').value = estimatedTax
+    document.getElementById('est_tax_input').value = parseFloat(estimatedTax).toFixed(2)
 
     let amountDue = subtotal + estimatedTax
 
-    document.getElementById('amt_due_input').value = amountDue
+    document.getElementById('amt_due_input').value = parseFloat(amountDue).toFixed(2)
+}
+
+function addDecimals(){
+    this.value = parseFloat(this.value).toFixed(2);
 }
