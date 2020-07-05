@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>PHP Invoice Builder</title>
-	<link rel="stylesheet" href="styles.css">
+	<!-- <link rel="stylesheet" href="styles.css"> -->
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -78,12 +78,16 @@
 											echo "<option>".$category['category_name']."</option>";
 										}
 									?>
+									<option value='new'>Add A Category</option>
 								</select>
+								<input id='category_input' type='text' name="category_name[]" class="invoice-form-input select-input" style="display:none">
 							</td>
 							<td>
 								<select id="item_name" name="item_name[]" class="invoice-form-input" onchange="selectItem()" disabled>
 									<option value=''>Select Item</option>
+									<option value='new'>Add An Item</option>
 								</select>
+								<input id='item_input' type='text' name="item_name[]" class="invoice-form-input select-input" style="display:none">
 							</td>
 							<td><input type="text" name="description[]" class="invoice-form-input description" disabled></td>
 							<td><input type="number" name="quantity[]" step="any" class="invoice-form-input num-input" disabled onchange="calculateTotal()"></td>

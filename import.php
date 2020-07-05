@@ -38,12 +38,13 @@
 		while($item = mysqli_fetch_array($list_res)){
 			echo "<option>".$item['item_name']."</option>";
 		}
+		echo "<option value='new'>Add An Item</option>";
 	}
 	
 	// AJAX REQUESTS FOR UPDATING ITEM DESCRIPTION AND PRICE BASED ON ITEM NAME SELECTED
 	$selected_item = $_GET['item'];
 	if($selected_item){
-		$item_info_res = mysqli_query($db, "SELECT item_desc, unit_price FROM invoice_item WHERE item_name = '".$selected_item."'");
+		$item_info_res = mysqli_query($db, "SELECT item_desc, unit_price FROM invoice_item WHERE item_name LIKE '".$selected_item."'");
 		while($item_info = mysqli_fetch_array($item_info_res)){
 			echo $item_info['item_desc'];
 			echo ',';
@@ -66,7 +67,10 @@
 		$est_tax = $_POST['est_tax'];
 		$amt_due = $_POST['amt_due'];
 
+		$category_names = $_POST['category_name'];
+		var_dump($category_names);
 		$item_names = $_POST['item_name'];
+		var_dump($item_names);
 		$item_descriptions = $_POST['description'];
 		$item_quantities = $_POST['quantity'];
 		$item_prices = $_POST['price'];
@@ -77,18 +81,25 @@
 			$result = mysqli_fetch_array($latest_invoice);
 			$invoice_id = +$result['max'];
 			for ($i=0; $i < count($item_names); $i++) {
-				$item_name = $item_names[$i]; 
-				$item_description = $item_descriptions[$i]; 
-				$item_quantity = $item_quantities[$i]; 
-				$item_price = $item_prices[$i]; 
-				$item_total = $item_totals[$i];
+				$category_name = $category_names[$i];
+				var_dump($category_name);
+				mysqli_query($db, "INSERT INTO invoice_category (category_name) SELECT * FROM (SELECT '".$category_name."') AS tmp WHERE NOT EXISTS ( SELECT category_name FROM invoice_category WHERE category_name LIKE '".$category_name."') LIMIT 1");
+				$category_id_query = mysqli_query($db, "SELECT id FROM invoice_category WHERE category_name LIKE '".$category_name."'");
+				$result = mysqli_fetch_array($category_id_query);
+				$category_id = +$result['id'];
+				var_dump($category_id);
 
-				$item_id_query = mysqli_query($db, "SELECT id FROM invoice_item WHERE item_name = '".$item_name."'");
+				$item_name = $item_names[$i]; 
+				$item_price = $item_prices[$i]; 
+				$item_description = $item_descriptions[$i];
+				mysqli_query($db, "INSERT INTO invoice_item (item_name, unit_price, item_desc, category_id) SELECT * FROM (SELECT '".$item_name."', ".$item_price.", '".$item_description."', ".$category_id.") AS tmp WHERE NOT EXISTS (SELECT item_name FROM invoice_item WHERE item_name LIKE '".$item_name."') LIMIT 1");
+				$item_id_query = mysqli_query($db, "SELECT id FROM invoice_item WHERE item_name LIKE '".$item_name."'");
 				$result = mysqli_fetch_array($item_id_query);
 				$item_id = +$result['id'];
-				if(mysqli_query($db, "INSERT INTO invoice_items_join (invoice_id, item_id, item_quantity, item_desc_act, item_price_act, item_total) VALUES (".$invoice_id.", ".$item_id.", ".$item_quantity.", '".$item_description."', ".$item_price.", ".$item_total.")")){
-					
-				}
+
+				$item_quantity = $item_quantities[$i]; 
+				$item_total = $item_totals[$i];
+				mysqli_query($db, "INSERT INTO invoice_items_join (invoice_id, item_id, item_quantity, item_desc_act, item_price_act, item_total) VALUES (".$invoice_id.", ".$item_id.", ".$item_quantity.", '".$item_description."', ".$item_price.", ".$item_total.")");
 			}
 		}
 	}

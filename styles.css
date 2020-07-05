@@ -172,6 +172,10 @@ body {
     width: auto;
 }
 
+.select-input {
+    width: 120px;
+}
+
 .description {
     width: 250px;
 }
