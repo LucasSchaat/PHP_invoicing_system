@@ -1,349 +1,352 @@
 * {
 	margin: 0;
 	padding: 0;
-    box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
+	box-sizing: border-box;
+	font-family: "Lato", sans-serif;
 }
 
 select {
-    font-size: 12px;
-    min-width: 120px;
+	font-size: 12px;
+	min-width: 120px;
 }
 
 input {
-    text-indent: 5px;
+	text-indent: 5px;
 }
 
 textarea {
-    text-indent: 5px;
+	text-indent: 5px;
 }
 
 body {
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .application {
-    width: 900px;
-    padding-bottom: 20px;
+	width: 900px;
+	padding-bottom: 20px;
 }
 
 .header-container {
-    height: 100px;
-    padding: 10px 0 10px 20px;
-    width: 100%;
+	height: 100px;
+	padding: 10px 0 10px 20px;
+	width: 100%;
 }
 
 #nav-form {
-    margin: 10px 0;
+	margin: 10px 0;
 }
 
 .btn {
-    width: 120px;
-    height: 35px;
-    border: 1px solid;
-    border-radius: 10px;
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
+	width: 120px;
+	height: 35px;
+	border: 1px solid;
+	border-radius: 10px;
+	color: white;
+	font-weight: bold;
+	font-size: 14px;
 }
 
 .nav-btn {
-    background-color: #23b7e5;
+	background-color: #23b7e5;
 }
 
 .nav-btn {
-    margin-right: 10px;
+	margin-right: 10px;
 }
 
 .landing-container {
-    display: flex;
-    margin: 20px 0;
+	display: flex;
+	margin: 20px 0;
 }
 
 .invoice-form {
-    margin: 50px 20px 0 20px;
+	margin: 50px 20px 0 20px;
 }
 
 .invoice-number-container {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .invoice-number-container > h3 {
-    font-size: 25px;
-    font-weight: 800;
+	font-size: 25px;
+	font-weight: 800;
 }
 
 .invoice-number {
-    border: none;
-    margin-left: 10px;
-    font-size: 25px;
-    font-weight: 800;
+	border: none;
+	margin-left: 10px;
+	font-size: 25px;
+	font-weight: 800;
 }
 
 .date-inputs {
-    margin: 20px 0;
+	margin: 20px 0;
 }
 
 .date-container {
-    display: flex;
-    font-size: 14px;
-    margin-top: 5px;
+	display: flex;
+	font-size: 14px;
+	margin-top: 5px;
 }
 
 .date-container > h3 {
-    width: 100px;
+	width: 100px;
 }
 
 .basic-info {
-    margin-top: 30px;
-    display: flex;
+	margin-top: 30px;
+	display: flex;
 }
 
 .basic-info > div {
-    width: 50%;
-    height: 200px;
+	width: 50%;
+	height: 200px;
 }
 
 .basic-info h3 {
-    font-size: 25px;
-    margin-bottom: 15px;
+	font-size: 25px;
+	margin-bottom: 15px;
 }
 
 .basic-info p {
-    margin-left: 40px;
-    font-size: 12px;
-    margin-top: 2px;
+	margin-left: 40px;
+	font-size: 12px;
+	margin-top: 2px;
 }
 
 #business-name {
-    font-weight: bold;
-    font-size: 14px;
+	font-weight: bold;
+	font-size: 14px;
 }
 
 .receiver-details {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .receiver-details > h3 {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .receiver-details > input {
-    margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 .receiver-details > textarea {
-    height: 60px;
+	height: 60px;
 }
 
 .table-container {
-    width: 860px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    vertical-align: middle;
+	width: 860px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	vertical-align: middle;
 }
 
 .table-container table {
-    border-spacing: 0;
-    display: block;
-    border-collapse: collapse;
-    font-size: 12px;
+	border-spacing: 0;
+	display: block;
+	border-collapse: collapse;
+	font-size: 12px;
 }
 
 .table-container th {
-    border: 1px solid #9a9b9d;
+	border: 1px solid #9a9b9d;
 }
 
 .table-container td {
-    border: 1px solid #9a9b9d;
-    height: 30px;
+	border: 1px solid #9a9b9d;
+	height: 30px;
 }
 
 .invoice-form-input {
-    font-size: 12px;
-    width: 100px;
-    margin: 10px;
+	font-size: 12px;
+	width: 100px;
+	margin: 10px;
 }
 
 .itemRow {
-    width: auto;
+	width: auto;
 }
 
 .select-input {
-    width: 120px;
+	width: 120px;
 }
 
 .description {
-    width: 250px;
+	width: 250px;
 }
 
 .num-input {
-    width: 70px;
+	width: 70px;
 }
 
 .invoice-form-checkbox {
-    width: 34px;
+	width: 34px;
 }
 
 .invoice-form-select {
-    width: 141px;
+	width: 141px;
 }
 
 .invoice-form-description {
-    width: 271px;
+	width: 271px;
 }
 
 .invoice-form-num {
-    width: 91px;
+	width: 91px;
 }
 
 .delete-btn {
-    background-color: #f05050;
+	background-color: #f05050;
 }
 
 .submit-btn {
-    background-color: #26c24c;
+	background-color: #26c24c;
 }
 
 .comments-totals-container {
-    margin: 20px 0 20px 0;
-    width: 860px;
-    display: flex;
+	margin: 20px 0 20px 0;
+	width: 860px;
+	display: flex;
 }
 
 .comments-container {
-    width: 70%;
+	width: 70%;
 }
 
 .totals-container {
-    width: 30%;
+	width: 30%;
 }
 
 .comments-container > h3 {
-    font-size: 25px;
-    margin-top: 20px;
-    margin-bottom: 10px;
+	font-size: 25px;
+	margin-top: 20px;
+	margin-bottom: 10px;
 }
 
 .comments-container textarea {
-    width: 500px;
-    height: 100px;
+	width: 500px;
+	height: 100px;
 }
 
 .totals-row {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
+	margin-top: 30px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .tax-input-container {
-    display: flex;
+	display: flex;
 }
 
 .tax-percent-symbol {
-    padding: 2px 2px 0 2px;
-    background-color: #9a9b9d;
-    font-size: 12px;
-    color: white;
-    border: 1px solid #9a9b9d;
-    border-radius: 2px;
+	padding: 2px 2px 0 2px;
+	background-color: #9a9b9d;
+	font-size: 12px;
+	color: white;
+	border: 1px solid #9a9b9d;
+	border-radius: 2px;
 }
 
 #tax_rate_input {
-    width: 118px;
-    margin-right: -3px;
+	width: 118px;
+	margin-right: -3px;
 }
 
 .total {
-    font-size: 12px;
+	font-size: 12px;
 }
 
 .ovr-total {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .invoice-history {
-    margin: 50px 20px 0 20px;
-    width: 860px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    vertical-align: middle;
+	margin: 50px 20px 0 20px;
+	width: 860px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	vertical-align: middle;
 }
 
 .invoice-history table {
-    border-spacing: 0;
-    display: block;
-    border-collapse: collapse;
+	border-spacing: 0;
+	display: block;
+	border-collapse: collapse;
 }
 
 .invoice-table th {
-    border: 1px solid #9a9b9d;
+	border: 1px solid #9a9b9d;
 }
 
 .invoice-table td {
-    border: 1px solid #9a9b9d;
-    height: 30px;
+	border: 1px solid #9a9b9d;
+	height: 30px;
 }
 
 .table-container {
-    width: 860px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    vertical-align: middle;
+	width: 860px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	vertical-align: middle;
 }
 
 .invoice-table {
-    margin: 20px 0;
+	margin: 20px 0;
 }
 
 .invoice-history table {
-    border-spacing: 0;
-    display: block;
-    border-collapse: collapse;
+	border-spacing: 0;
+	display: block;
+	border-collapse: collapse;
 }
 
 .invoice-history th {
-    border: 1px solid #9a9b9d;
+	border: 1px solid #9a9b9d;
 }
 
 .invoice-history td {
-    border: 1px solid #9a9b9d;
-    height: 30px;
+	border: 1px solid #9a9b9d;
+	height: 30px;
 }
 
 .invoice-history-display {
-    width: calc(860px/6);
-    font-size: 12px;
+	width: calc(860px / 6);
+	font-size: 12px;
 }
 
 .invoice-history-data-items {
-    font-size: 12px;
-    text-align: center;
+	font-size: 12px;
+	text-align: center;
 }
 
 .totals {
-    width: 860px;
-    padding-left: 430px;
-    padding-right: 50px;
+	width: 860px;
+	padding-left: 430px;
+	padding-right: 50px;
 }
 
 .category-totals-container {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .total-header {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .category-name {
-    padding-left: 20px;
+	padding-left: 20px;
 }
 
 .est-tax-total {
-    margin-top: 10px;
+	margin-top: 25px;
 }
 
+.total-due {
+	margin-top: 10px;
+}

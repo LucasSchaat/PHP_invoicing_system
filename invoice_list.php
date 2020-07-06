@@ -63,7 +63,7 @@
                     <h3>Estimated Tax Balance:</h3>
                     <h4 class='category-total'><?="$$tax_total"?></h4>
                 </div>
-                <div class='category-totals-container est-tax-total'>
+                <div class='category-totals-container total-due'>
                     <h2 class='invoice-total'>Total Invoiced Amount:</h2>
                     <h2 class='category-total'><?="$$invoice_total"?></h2>
                 </div>
