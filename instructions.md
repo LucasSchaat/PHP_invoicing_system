@@ -11,7 +11,7 @@ Initialization Steps/Configuration -
     - The invoice_item table holds the names, original descriptions, original prices and categories associated with the invoice items created by the user
     - The invoice_items_join table holds the actual price, quantity, description and total associated with each item included in the invoice
 
-* In order to access data from the api.php file in the browser, the user should navigate to the api.php file and include the following information in the url:
+* In order to access data from the api.php file in the browser, the user should navigate to the api.php file and include the following information in the url (both are GET requests):
 
     - URL: '../api.php?invoices' - this returns a JSON array of all of the invoices and their associated invoice information
 
