@@ -23,10 +23,11 @@
             header('Content-Type: application/json');
             echo json_encode($data);
 
-        } elseif($key == 'invoice'){
+        } elseif($key == 'invoice' && $value){
             $invoice_query = mysqli_query($db, "SELECT id AS invoice_number, customer_name, address, phone, email, comments, invoice_date, due_date, subtotal, est_tax, amt_due AS invoice_total FROM invoice WHERE id = ".+$value);
             
             $invoice_data = mysqli_fetch_array($invoice_query, MYSQLI_ASSOC);
+            
             header('Content-Type: application/json');
             echo json_encode($invoice_data);
                
