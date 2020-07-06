@@ -18,3 +18,5 @@ Initialization Steps/Configuration -
     - URL: '../api.php?invoice=<INVOICE_NUMBER>' - this returns a JSON object with the invoice information associated with the requested invoice number that was placed in the stead of the '<INVOICE_NUMBER>' placeholder above
 
     - All other requests should return a 404 status code and an associated error view in the browser
+
+* Navigate to the index.php file to access the project
